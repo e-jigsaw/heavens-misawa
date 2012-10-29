@@ -1,0 +1,17 @@
+{
+	"name": "Heaven's MISAWA",
+	"version": "0.0.1",
+	"engines": {
+		"node": "0.8.12",
+		"npm": "1.1.49"
+	},
+	"dependencies": {
+		"coffee-script": "1.3.3",
+		"grunt": "0.3.17",
+		"grunt-coffee": "0.0.6",
+		"express": "3.0.0rc5",
+	},
+	"scripts": {
+		"start": "coffee -b -c grunt.coffee; grunt coffee; node app.js"
+	}
+}
