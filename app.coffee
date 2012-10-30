@@ -22,7 +22,7 @@ app.configure ->
 	app.use express.logger "dev"
 	app.use app.router
 	app.use express.static(path.join __dirname, "public")
-	app.use bodyDecoder()
+	app.use express.bodyParser()
 
 app.configure "development", ->
 	app.use express.errorHandler()
