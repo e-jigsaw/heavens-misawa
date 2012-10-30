@@ -6,6 +6,8 @@ path = require "path"
 express = require "express"
 routes = require "./routes"
 photo = require "./routes/photo"
+comment = require "./routes/comment"
+like = require "./routes/like"
 feed = require "./routes/feed"
 user = require "./routes/user"
 follow = require "./routes/follow"
@@ -30,9 +32,12 @@ app.get "/", routes.index
 app.get "/api/photo/:id", photo.get
 app.post "/api/photo/:id", photo.post
 app.delete "/api/photo/:id", photo.delete
+app.post "/api/photo/:id/comment", comment.post
+app.post "/api/photo/:id/like", like.post
 app.get "/api/feed/:id", feed.get
 app.get "/api/user/:id", user.get
 app.post "/api/user/:id", user.post
+app.post "/api/user/:id", user.put
 app.post "/api/user/follow/:id", follow.get
 app.delete "/api/user/follow/:id", follow.delete
 

@@ -27,9 +27,16 @@ module.exports = (grunt)->
 				options:
 					bare: true
 
+			# library
+			lib:
+				src: ["lib/*.coffee"]
+				dest: "lib/"
+				options:
+					bare: true
+
 		# file watch
 		watch:
-			files: ["app.coffee", "grunt.coffee"]
+			files: ["app.coffee", "grunt.coffee", "routes/*.coffee", "lib/*.coffee"]
 			tasks: "coffee"
 
 	# load modules
