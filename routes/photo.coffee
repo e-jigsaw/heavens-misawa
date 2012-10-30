@@ -5,19 +5,19 @@ db = require "../lib/db"
 
 exports.get = (req, res)->
 	db.getPhoto
-		id: req.query.id
+		id: req.parms.id
 	, (data)->
 		res.json JSON.stringify(data)
 
 exports.post = (req, res)->
 	db.postPhoto 
-		id: req.query.id
+		id: req.parms.id
 		photo: req.body.photo
 	, (data)->
 		res.json JSON.stringify(data)
 
 exports.delete = (req, res)->
 	db.deletePhoto
-		id: req.query.id
+		id: req.parms.id
 	, (data)->
 		res.json JSON.stringify(data)
