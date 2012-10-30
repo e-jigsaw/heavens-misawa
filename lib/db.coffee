@@ -105,7 +105,7 @@ exports.getPhoto = (req, callback)->
 	photoModel.find
 		id: req.id
 	, (err, doc)->
-		if !err
+		if !err || doc?
 			# make responce object
 			res = 
 				error: false
