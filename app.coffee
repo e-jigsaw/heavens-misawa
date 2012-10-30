@@ -27,14 +27,14 @@ app.configure "development", ->
 
 # routing 
 app.get "/", routes.index
-app.get "/api/photo?*", photo.get
-app.post "/api/photo?*", photo.post
-app.delete "/api/photo?*", photo.delete
-app.get "/api/feed?*", feed.get
-app.get "/api/user?*", user.get
-app.post "/api/user?*", user.post
-app.post "/api/user/follow?*", follow.get
-app.delete "/api/user/follow?*", follow.delete
+app.get "/api/photo/:id", photo.get
+app.post "/api/photo/:id", photo.post
+app.delete "/api/photo/:id", photo.delete
+app.get "/api/feed/:id", feed.get
+app.get "/api/user/:id", user.get
+app.post "/api/user/:id", user.post
+app.post "/api/user/follow/:id", follow.get
+app.delete "/api/user/follow/:id", follow.delete
 
 # server start
 server.listen app.get("port"), ->
