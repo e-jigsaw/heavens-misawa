@@ -28,7 +28,7 @@ app.delete "/api/photo?*", photo.delete
 app.get "/api/feed?*", feed.get
 app.get "/api/user?*", user.get
 app.post "/api/user?*", user.post
-app.get "/api/user/follow?*", follow.get
+app.post "/api/user/follow?*", follow.get
 app.delete "/api/user/follow?*", follow.delete
 
 server.listen app.get("port"), ->
