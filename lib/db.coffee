@@ -5,7 +5,7 @@ mongoose = require "mongoose"
 fs = require "fs"
 
 # connect to DB
-db = mongoose.createConnection "mongo://user:pass@localhost/misawa"
+db = mongoose.createConnection "mongo://#{process.env.MONGODB_USER}:#{process.env.MONGODB_PASS}@localhost/misawa"
 
 # ユーザのスキーマ
 userSchema = mongoose.Schema
