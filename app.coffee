@@ -30,7 +30,7 @@ app.configure "development", ->
 # routing 
 app.get "/", routes.index
 app.get "/api/photo/:id", photo.get
-app.post "/api/photo/:id", photo.post
+app.post "/api/photo", photo.post
 app.delete "/api/photo/:id", photo.delete
 app.post "/api/photo/:id/comment", comment.post
 app.post "/api/photo/:id/like", like.post

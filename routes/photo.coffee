@@ -11,7 +11,7 @@ exports.get = (req, res)->
 
 exports.post = (req, res)->
 	db.postPhoto 
-		id: req.params.id
+		user_id: req.params.id
 		photo: req.body.photo
 	, (data)->
 		res.json JSON.stringify(data)

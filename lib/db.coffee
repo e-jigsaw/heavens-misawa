@@ -136,7 +136,7 @@ exports.postPhoto = (req, callback)->
 		fs.writeFile "./public/images/blob/#{num+1}.jpg", req.photo, (err)->
 			if !err
 				userModel.find
-					id: req.id
+					user_id: req.user_id
 				, (err, doc)->
 					photo = new photoModel
 						id: num+1
