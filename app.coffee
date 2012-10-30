@@ -4,14 +4,13 @@
 http = require "http"
 path = require "path"
 express = require "express"
-mongoose = require "mongoose"
 routes = require "./routes"
 photo = require "./routes/photo"
 feed = require "./routes/feed"
 user = require "./routes/user"
 follow = require "./routes/follow"
 
-# setting express
+# express settings
 app = express()
 server = http.createServer app
 
@@ -21,6 +20,7 @@ app.configure ->
 	app.use express.logger "dev"
 	app.use app.router
 	app.use express.static(path.join __dirname, "public")
+	app.use bodyDecoder()
 
 app.configure "development", ->
 	app.use express.errorHandler()
