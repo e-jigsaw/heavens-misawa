@@ -209,8 +209,7 @@ exports.postUser = (req, callback)->
 		# make new user
 		user = new userModel
 			user_id: num+1
-			twitter: req.twitter
-			twitter_secret: req.twitter_secret
+			uuid: req.uuid
 			name: req.name
 			following: 0
 			follower: 0

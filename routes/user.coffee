@@ -11,8 +11,7 @@ exports.get = (req, res)->
 
 exports.post = (req, res)->
 	db.postUser
-		twitter: req.body.twitter
-		twitter_secret: req.body.twitter_secret
+		uuid: req.body.uuid
 		name: req.body.name
 	, (data)->
 		res.json JSON.stringify(data)
