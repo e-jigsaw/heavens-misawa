@@ -15,9 +15,7 @@ userSchema = mongoose.Schema
 		type: Number
 		required: true
 		unique: true
-	twitter:
-		type: String
-	twitter_secret:
+	uuid:
 		type: String
 	name:
 		type: String
