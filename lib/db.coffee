@@ -139,6 +139,7 @@ exports.deletePhoto = (req, callback)->
 
 exports.getFeed = (req, callback)->
 	photoModel.find({}).populate("user").exec (err, photos)->
+		console.log photos
 		if !err
 			res =
 				error: false
