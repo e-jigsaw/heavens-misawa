@@ -5,9 +5,8 @@ db = require "../lib/db"
 
 exports.post = (req, res)->
 	db.postComment
-		id: req.query.id
+		id: req.params.id
 		text: req.body.text
-		user_id: req.query.user_id
+		user_id: req.body.user_id
 	, (data)->
 		res.json JSON.stringify(data)
-		

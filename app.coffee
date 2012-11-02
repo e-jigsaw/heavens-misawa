@@ -18,11 +18,12 @@ server = http.createServer app
 
 app.configure ->
 	app.set "port", process.env.PORT || 3000
+	app.use express.methodOverride()
+	app.use express.bodyParser()
 	app.use express.favicon()
 	app.use express.logger "dev"
 	app.use app.router
 	app.use express.static(path.join __dirname, "public")
-	app.use express.bodyParser()
 
 app.configure "development", ->
 	app.use express.errorHandler()
@@ -36,7 +37,7 @@ app.post "/api/photo/:id/comment", comment.post
 app.post "/api/photo/:id/like", like.post
 app.get "/api/feed/:id", feed.get
 app.get "/api/user/:id", user.get
-app.post "/api/user/:id", user.post
+app.post "/api/user", user.post
 app.post "/api/user/:id", user.put
 app.post "/api/user/follow/:id", follow.get
 app.delete "/api/user/follow/:id", follow.delete

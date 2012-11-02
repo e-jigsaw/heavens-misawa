@@ -5,15 +5,15 @@ db = require "../lib/db"
 
 exports.get = (req, res)->
 	db.getUser
-		id: req.query.id
+		user_id: req.params.id
 	, (data)->
 		res.json JSON.stringify(data)
 
 exports.post = (req, res)->
 	db.postUser
-		facebook: req.query.facebook
-		twitter: req.query.twitter
-		name: req.query.name
+		twitter: req.body.twitter
+		twitter_secret: req.body.twitter_secret
+		name: req.body.name
 	, (data)->
 		res.json JSON.stringify(data)
 
