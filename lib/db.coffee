@@ -139,7 +139,6 @@ exports.deletePhoto = (req, callback)->
 
 exports.getFeed = (req, callback)->
 	photoModel.find({}).populate("user").populate("comments.user").populate("likes.user").exec (err, photos)->
-		console.log photos
 		if !err
 			res =
 				error: false
@@ -148,6 +147,7 @@ exports.getFeed = (req, callback)->
 
 			for photo in photos
 				photo = 
+					id: photo.id
 					user:
 						user_id: photo.user.user_id
 						name: photo.user.name
