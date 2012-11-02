@@ -51,7 +51,7 @@ photoSchema = mongoose.Schema
 	likes: [
 		user:
 			type: Schema.Types.ObjectId
-			ref: "likes"
+			ref: "users"
 	]
 
 # follow のスキーマ
@@ -153,7 +153,7 @@ exports.getFeed = (req, callback)->
 						name: photo.user.name
 					photo_url: photo.photo_url
 					comments: []
-					like: []
+					likes: []
 				for comment in photo.comments
 					comment =
 						text: comment.text
