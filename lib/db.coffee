@@ -143,7 +143,30 @@ exports.getFeed = (req, callback)->
 			res =
 				error: false
 				errorCode: 0
-				photos: photos
+				photos: []
+
+			for photo in photos
+				photo = 
+					user:
+						user_id: photo.user.user_id
+						name: photo.user.name
+					photo_url: photo.photo_url
+					comments: []
+					like: []
+				for comment in photo.comments
+					comment =
+						text: comment.text
+						user:
+							user_id: comment.user.user_id
+							name: comment.user.name
+					photo.comments.push comment
+				for like in photo.likes
+					like =
+						user:
+							user_id: like.user.user_id
+							name: like.user.name
+					photo.likes.push like
+				res.photos.push photo
 
 			callback res
 		else 
