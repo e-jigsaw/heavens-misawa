@@ -138,7 +138,9 @@ exports.postPhoto = (req, callback)->
 exports.deletePhoto = (req, callback)->
 
 exports.getFeed = (req, callback)->
-	photoModel.find {}, (err, photos)->
+	photoModel.find {}
+	.populate "user"
+	.exec (err, photos)->
 		if !err
 			res =
 				error: false
