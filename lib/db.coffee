@@ -102,7 +102,6 @@ exports.getPhoto = (req, callback)->
 
 # post photodata
 exports.postPhoto = (req, callback)->
-	console.log req
 	photoModel.count (err, num)->
 		if !err
 			userModel.findOne
@@ -117,9 +116,8 @@ exports.postPhoto = (req, callback)->
 						user: user._id
 						comments: []
 						likes: []
-					console.log photo
+
 					photo.save (err)->
-						console.log err
 						if !err
 							callback
 								error: false
