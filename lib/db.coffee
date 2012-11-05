@@ -204,27 +204,6 @@ exports.getUser = (req, callback)->
 
 # post user data (new create)
 exports.postUser = (req, callback)->
-	userModel.count (err, num)->
-		# make new user
-		user = new userModel
-			user_id: num+1
-			uuid: req.uuid
-			name: req.name
-			following: 0
-			follower: 0
-
-		user.save (err)->
-			if !err
-				callback
-					error: false
-					errorCode: 0
-					id: num+1
-			else
-				error.make 0, (res)->
-					callback res
-
-# login user
-exports.loginUser = (req, callback)->
 	userModel.findOne
 		uuid: req.uuid
 	, (user)->
@@ -235,9 +214,25 @@ exports.loginUser = (req, callback)->
 				user_id: user.user_id
 
 			callback res
-		else
-			error.make 0, (res)->
-				callback res
+		else	
+			userModel.count (err, num)->
+				# make new user
+				user = new userModel
+					user_id: num+1
+					uuid: req.uuid
+					name: req.name
+					following: 0
+					follower: 0
+
+				user.save (err)->
+					if !err
+						callback
+							error: false
+							errorCode: 0
+							id: num+1
+					else
+						error.make 0, (res)->
+							callback res
 
 exports.putUser = (req, callback)->
 

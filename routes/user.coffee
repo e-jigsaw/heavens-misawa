@@ -23,9 +23,3 @@ exports.put = (req, res)->
 		name: req.query.name
 	, (data)->
 		res.json JSON.stringify(data)
-
-exports.login = (req, res)->
-	db.loginUser
-		uuid: req.body.uuid
-	, (data)->
-		res.json JSON.stringify(data)
