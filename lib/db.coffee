@@ -117,8 +117,9 @@ exports.postPhoto = (req, callback)->
 						user: user._id
 						comments: []
 						likes: []
-
+					console.log photo
 					photo.save (err)->
+						console.log err
 						if !err
 							callback
 								error: false
