@@ -38,7 +38,8 @@ app.post "/api/photo/:id/like", like.post
 app.get "/api/feed/:id", feed.get
 app.get "/api/user/:id", user.get
 app.post "/api/user", user.post
-app.post "/api/user/:id", user.put
+app.post "/api/user/:id/edit", user.put
+app.post "/api/user/:id/login", user.login
 app.post "/api/user/follow/:id", follow.get
 app.delete "/api/user/follow/:id", follow.delete
 

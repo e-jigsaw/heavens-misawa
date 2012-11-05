@@ -223,6 +223,22 @@ exports.postUser = (req, callback)->
 				error.make 0, (res)->
 					callback res
 
+# login user
+exports.loginUser = (req, callback)->
+	userModel.findOne
+		uuid: req.uuid
+	, (user)->
+		if !user?
+			res =
+				error: false
+				errorCode: 0
+				user_id: user.user_id
+
+			callback res
+		else
+			error.make 0, (res)->
+				callback res
+
 exports.putUser = (req, callback)->
 
 exports.postFollow = (req, callback)->
