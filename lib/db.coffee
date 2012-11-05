@@ -135,8 +135,9 @@ exports.postPhoto = (req, callback)->
 
 exports.deletePhoto = (req, callback)->
 
+# get feed data
 exports.getFeed = (req, callback)->
-	photoModel.find({}).populate("user").populate("comments.user").populate("likes.user").exec (err, photos)->
+	photoModel.find({}).sort(date: "desc").limit(20).populate("user").populate("comments.user").populate("likes.user").exec (err, photos)->
 		if !err
 			res =
 				error: false
