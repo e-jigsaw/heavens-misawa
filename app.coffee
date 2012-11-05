@@ -11,6 +11,7 @@ like = require "./routes/like"
 feed = require "./routes/feed"
 user = require "./routes/user"
 follow = require "./routes/follow"
+show = require "./routes/show"
 
 # express settings
 app = express()
@@ -18,6 +19,9 @@ server = http.createServer app
 
 app.configure ->
 	app.set "port", process.env.PORT || 3000
+	app.set "views", "#{__dirname}/views"
+	app.set "view engine", "jade"
+	app.use require("less-middleware")(src: "#{__dirname}/public")
 	app.use express.methodOverride()
 	app.use express.bodyParser()
 	app.use express.favicon()
@@ -30,6 +34,7 @@ app.configure "development", ->
 
 # routing 
 app.get "/", routes.index
+app.get "/show/:id", show.index
 app.get "/api/photo/:id", photo.get
 app.post "/api/photo", photo.post
 app.delete "/api/photo/:id", photo.delete

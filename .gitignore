@@ -1,5 +1,7 @@
 .DS_Store
+.env
 node_modules
 *.js
 hence.pem
-
+!jquery-1.8.1.min.js
+!jquery.tmpl.min.js

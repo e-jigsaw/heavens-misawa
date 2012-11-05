@@ -72,10 +72,8 @@ followerModel = db.model "followers", followSchema
 # get photo data
 exports.getPhoto = (req, callback)->
 	# call database
-	photoModel.findOne
-		id: req.id
-	, (err, photo)->
-		if !err && doc.length > 0
+	photoModel.findOne({id: req.id}).populate("user").populate("comments.user").populate("likes.user").exec (err, photo)->
+		if !err
 			# make responce object
 			res = 
 				error: false
