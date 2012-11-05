@@ -207,7 +207,7 @@ exports.postUser = (req, callback)->
 	userModel.findOne
 		uuid: req.uuid
 	, (user)->
-		if !user?
+		if user?
 			res =
 				error: false
 				errorCode: 0
