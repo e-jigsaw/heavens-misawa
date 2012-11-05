@@ -102,6 +102,7 @@ exports.getPhoto = (req, callback)->
 
 # post photodata
 exports.postPhoto = (req, callback)->
+	console.log req
 	photoModel.count (err, num)->
 		if !err
 			userModel.findOne
