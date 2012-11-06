@@ -72,16 +72,14 @@ followerModel = db.model "followers", followSchema
 # get photo data
 exports.getPhoto = (req, callback)->
 	# call database
-	photoModel.findOne
-		id: req.id
-	, (err, photo)->
-		if !err && doc.length > 0
+	photoModel.findOne({id: req.id}).populate("user").populate("comments.user").populate("likes.user").exec (err, photo)->
+		if !err
 			# make responce object
 			res = 
 				error: false
 				errorCode: 0
 				id: photo.id
-				url: photo.photo_url
+				photo_url: photo.photo_url
 				date: photo.date
 				user:
 					user_id: photo.user.user_id
@@ -151,8 +149,11 @@ exports.getFeed = (req, callback)->
 						user_id: photo.user.user_id
 						name: photo.user.name
 					photo_url: photo.photo_url
+					date: photo.date
+					rel_date: ""
 					comments: []
 					likes: []
+
 				for comment in photo.comments
 					comment =
 						text: comment.text
@@ -160,6 +161,7 @@ exports.getFeed = (req, callback)->
 							user_id: comment.user.user_id
 							name: comment.user.name
 					photo.comments.push comment
+
 				for like in photo.likes
 					like =
 						user:
@@ -168,6 +170,18 @@ exports.getFeed = (req, callback)->
 					photo.likes.push like
 				res.photos.push photo
 
+				now_date = new Date()
+				photo_date = new Date(photo.date)
+				diff = now_date.getTime() - photo_date.getTime()
+				diff_date = new Date(diff)
+				if diff > 259200000
+					photo.rel_date = "#{diff_date.getDay()}日前"
+				else if diff > 10800000
+					photo.rel_date = "#{diff_date.getHours()}時間前"
+				else
+					photo.rel_date = "#{diff_date.getMinutes()}分前"
+
+				res.photos.push photo
 			callback res
 		else 
 			error.make 0, (res)->

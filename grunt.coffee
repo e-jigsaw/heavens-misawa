@@ -33,10 +33,16 @@ module.exports = (grunt)->
 				dest: "lib/"
 				options:
 					bare: true
+			# client
+			client:
+				src: ["client/*.coffee"]
+				dest: "public/javascripts/"
+				options:
+					bare: true
 
 		# file watch
 		watch:
-			files: ["app.coffee", "grunt.coffee", "routes/*.coffee", "lib/*.coffee"]
+			files: ["app.coffee", "grunt.coffee", "routes/*.coffee", "lib/*.coffee", "client/*.coffee"]
 			tasks: "coffee"
 
 	# load modules
