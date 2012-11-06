@@ -79,7 +79,7 @@ exports.getPhoto = (req, callback)->
 				error: false
 				errorCode: 0
 				id: photo.id
-				url: photo.photo_url
+				photo_url: photo.photo_url
 				date: photo.date
 				user:
 					user_id: photo.user.user_id
@@ -149,6 +149,7 @@ exports.getFeed = (req, callback)->
 						user_id: photo.user.user_id
 						name: photo.user.name
 					photo_url: photo.photo_url
+					date: photo.date
 					comments: []
 					likes: []
 				for comment in photo.comments

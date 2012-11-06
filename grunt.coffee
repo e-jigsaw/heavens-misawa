@@ -36,14 +36,14 @@ module.exports = (grunt)->
 
 			# client
 			client:
-				src: ["client.coffee"]
+				src: ["client/*.coffee"]
 				dest: "public/javascripts/"
 				options:
 					bare: true
 
 		# file watch
 		watch:
-			files: ["app.coffee", "grunt.coffee", "routes/*.coffee", "lib/*.coffee", "client.coffee"]
+			files: ["app.coffee", "grunt.coffee", "routes/*.coffee", "lib/*.coffee", "client/*.coffee"]
 			tasks: "coffee"
 
 	# load modules
